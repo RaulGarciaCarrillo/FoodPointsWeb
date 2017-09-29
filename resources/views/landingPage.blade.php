@@ -54,6 +54,7 @@
       </div>
     </nav>
 
+<div>
     <header class="masthead">
       <div class="header-content">
         <div class="header-content-inner">
@@ -64,6 +65,7 @@
         </div>
       </div>
     </header>
+    </div>
 
     <section class="bg-primary" id="about">
       <div class="container">

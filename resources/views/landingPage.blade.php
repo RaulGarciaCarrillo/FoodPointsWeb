@@ -43,11 +43,17 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#services">Servicios</a>
             </li>
-            <li class="nav-item">
+            <!--<li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#portfolio">Descripción</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#contact">Contáctanos</a>
+            </li>-->
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/login">Iniciar Sesión</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/register">Registrarse</a>
             </li>
           </ul>
         </div>

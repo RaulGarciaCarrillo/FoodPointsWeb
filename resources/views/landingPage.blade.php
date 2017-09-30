@@ -67,7 +67,7 @@
           <h1 id="homeHeading">Food Points</h1>
           <hr>
           <p>El lugar de las comidas</p>
-          <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">¿Qué es?</a>
+          <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">¿Quiénes somos?</a>
         </div>
       </div>
     </header>
@@ -79,8 +79,8 @@
           <div class="col-lg-8 mx-auto text-center">
             <h2 class="section-heading text-white">Somos la solución a tu antojo en donde quiera que estés</h2>
             <hr class="light">
-            <p class="text-faded">¿Cuántas veces no has estado harto de comer lo mismo y no saber si algo nuevo es bueno? Pues eso ahora ya no es un problema, aquí encontrarás las recomendaciones de la gente sobre los restaurantes cercanos al área donde te encuentres</p>
-            <a class="btn btn-default btn-xl js-scroll-trigger" href="#services">¿Qué más?</a>
+            <p class="text-faded">¿No sabes qué comer y no conoces si algún lugar es bueno? Eso ya no será un problema, aquí encontrarás las recomendaciones de la gente sobre los restaurantes cercanos.</p>
+            <a class="btn btn-default btn-xl js-scroll-trigger" href="#services">Más información</a>
           </div>
         </div>
       </div>
@@ -159,7 +159,7 @@
 
     <div class="call-to-action bg-dark">
       <div class="container text-center">
-        <h2>¿Te gustó verdad?</h2>
+        <h2>¿Te gustó, verdad?</h2>
         <a class="btn btn-default btn-xl sr-button" href="/register">¡Pruébala ya!</a>
       </div>
     </div>

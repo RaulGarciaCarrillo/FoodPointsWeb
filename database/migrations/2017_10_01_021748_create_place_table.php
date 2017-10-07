@@ -34,4 +34,5 @@ class CreatePlaceTable extends Migration
     {
         Schema::dropIfExists('place');
     }
+
 }

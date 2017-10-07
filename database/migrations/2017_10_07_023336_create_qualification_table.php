@@ -15,9 +15,14 @@ class CreateQualificationTable extends Migration
     {
         Schema::create('qualification', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('users_id');
-            $table->integer('place_id');
+            $table->integer('users_id')->unsigned();
+            $table->integer('place_id')->unsigned();
             $table->integer('stars');
+        });
+
+        Schema::table('qualification', function($table) {
+            $table->foreign('users_id')->references('id')->on('users');
+            $table->foreign('place_id')->references('id')->on('place');
         });
     }
 

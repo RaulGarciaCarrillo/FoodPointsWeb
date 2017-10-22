@@ -20,3 +20,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/foodType', 'foodTypeController@get')->name('foodType');
+
+Route::get('/user', 'UserController@show');
+
+Route::get('/place/{id}', 'PlaceController@show');
+
+

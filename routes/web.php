@@ -26,3 +26,13 @@ Route::get('/user', 'UserController@show');
 Route::get('/place/{id}', 'PlaceController@show');
 
 
+Route::get('/profile', function () {
+    return view('profile');
+});
+
+Route::get('/place', function () {
+    return view('place');
+});
+
+
+

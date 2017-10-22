@@ -15,8 +15,8 @@ class CreateFoodTypeTable extends Migration
     {
         Schema::create('foodType', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 50);;
-            $table->binary('logo')->nullable(); // for blob
+            $table->string('name', 50);
+            $table->string('src');
         });
     }
 

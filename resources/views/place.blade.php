@@ -19,7 +19,7 @@
 	          <i class="fa fa-heart-o fa-2x" aria-hidden="true"></i>
 	        </div>
 
-	        <img width="100%" src="http://viajerosblog.com/wp-content/uploads/2012/10/Puesto-Comida-Praga.jpg" />
+	        <img width="100%" src="data:image/png;base64,{[{place.image}]}" />
 	        <p>{[{place.description}]}</p>
 	    </div>
 	</div>

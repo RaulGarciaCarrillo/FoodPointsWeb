@@ -50,6 +50,7 @@ class UserController extends Controller
     {
         return DB::table('users')
         ->where('users.id', '=', $id)
+        ->get();
     }
 
     /**

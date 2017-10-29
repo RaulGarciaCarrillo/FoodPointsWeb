@@ -1,17 +1,13 @@
-@extends('home')
+@extends('layouts.app')
+@section('content')
 
-@section('main-content')
 
-<div id="app"> @{{ message }} </div>
+	<div class="col-md-3"></div>
+	<div ng-controller="ctrlUser">
+	    <div ng-repeat="x in items track by $index">{[{x.name}]}</div>
+	</div>
 
-<script>
-    new Vue({
-      el: '#app',
-      data: {
-        message: 'Hello Vue.js!'
-      }
-    });
-</script>
+
 
 @endsection
 

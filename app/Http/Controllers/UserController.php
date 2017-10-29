@@ -46,9 +46,10 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
-        return DB::table('users')->get();
+        return DB::table('users')
+        ->where('users.id', '=', $id)
     }
 
     /**

@@ -25,6 +25,8 @@ Route::get('/profile/{id}', 'UserController@show');
 
 Route::get('/place/{id}', 'PlaceController@show');
 
+Route::get('/favorite/{id}', 'FavoriteController@show');
+
 
 Route::get('/profile', function () {
     return view('profile');
@@ -32,6 +34,10 @@ Route::get('/profile', function () {
 
 Route::get('/place', function () {
     return view('place');
+});
+
+Route::get('/favorite', function () {
+    return view('favorite');
 });
 
 

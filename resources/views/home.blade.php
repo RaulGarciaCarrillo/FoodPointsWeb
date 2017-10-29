@@ -20,7 +20,7 @@
   <a href="{{ url('/profile') }}">Perfil</a>
 </div>
 
-    <div class="container-fluid" style="height: 80%; overflow-y: auto;">
+    <div class="container-fluid" style="height: 560px; overflow-y: auto;">
         @yield('main-content')
     </div>
 

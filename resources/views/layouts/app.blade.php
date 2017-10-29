@@ -16,9 +16,7 @@
     <link href="css/navbar.css" rel="stylesheet"> 
 
     <style type="text/css">
-        html {
-                overflow-y: hidden;
-        }
+       
     </style>
 
 </head>
@@ -97,6 +95,7 @@
     <script src="js/main.js"></script>
     <script src="js/place.js"></script>
     <script src="js/user.js"></script>
+    <script src="js/favorite.js"></script>
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
     <script>

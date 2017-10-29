@@ -23,7 +23,7 @@
 
 </head>
 <body>
-    <div id="app">
+    <div id="app" ng-app="myApp">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
@@ -83,5 +83,23 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <!-- Scripts -->
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<!-- Plugin JavaScript -->
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/place.js"></script>
+<link rel="stylesheet" href="css/navbar.css">
+<link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+</script>
 </body>
 </html>

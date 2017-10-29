@@ -48,12 +48,13 @@ class PlaceController extends Controller
      */
     public function show($id)
     {
+         
         return DB::table('place')
         ->join('place_food', 'place.id', '=', 'place_food.place_id')
         ->join('foodType', 'place_food.foodType_id', '=', 'foodType.id')
-        ->where('foodType.id', '=', $id)
-        ->get()
-        ;
+        ->whereIn('foodType.id', array(1))
+        ->select(DB::raw('place.name as name1, place.image'))
+        ->get();
     }
 
     /**
@@ -89,4 +90,6 @@ class PlaceController extends Controller
     {
         //
     }
+
+
 }

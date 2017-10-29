@@ -21,7 +21,7 @@ class CreatePlaceTable extends Migration
             $table->string('longitude');
             $table->string('description')->nullable();
             $table->tinyInteger('active')->default(1);
-            $table->binary('image')->nullable(); // for blob
+            $table->longText('image')->nullable(); // for blob
         });
     }
 

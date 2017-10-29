@@ -15,11 +15,6 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="css/navbar.css" rel="stylesheet"> 
 
-    <style type="text/css">
-        html {
-                overflow-y: hidden;
-        }
-    </style>
 
 </head>
 <body>

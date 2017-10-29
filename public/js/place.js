@@ -1,13 +1,9 @@
-var myApp = angular.module("myApp", []).config(function($interpolateProvider) {
-    $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
-});
-
 myApp.controller("ctrlPlace", function($scope) {
 
-    $scope.items = [];
+    $scope.places = [];
 
     axios.get('place/1').then(response => {
-            $scope.items = response.data;
+            $scope.places = response.data;
             $scope.$digest();
         })
         .catch(error => {

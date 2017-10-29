@@ -94,18 +94,19 @@
     <!-- Plugin JavaScript -->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="js/angular.min.js"></script>
+    <script src="js/main.js"></script>
     <script src="js/place.js"></script>
     <script src="js/user.js"></script>
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
-<script>
-function openNav() {
-    document.getElementById("mySidenav").style.width = "250px";
-}
+    <script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+    }
 
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-}
-</script>
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }
+    </script>
 </body>
 </html>

@@ -1,10 +1,31 @@
 @extends('layouts.app')
+
 @section('content')
 
-<div class="col-md-3"></div>
-<div ng-controller="ctrlPlace">
-    <div ng-repeat="x in items track by $index">{[{x.name1}]}</div>
-</div>
+<div ng-controller="ctrlPlace" class="container-fluid">
+	<div class="col-md-3"></div>
+	
+	<div class="col-md-6" >
+	    <div ng-repeat="place in places track by $index">
+	        <h2 class="text-center">{[{place.placeName}]}</h2>
+	        <div class="col-md-6 text-center">
+	            <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
+	            <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
+	            <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
+	            <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
+	            <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
+	            </div>
+	        <div class="col-md-6 text-center">
+	          <i class="fa fa-heart-o fa-2x" aria-hidden="true"></i>
+	        </div>
 
+	        <img width="100%" src="http://viajerosblog.com/wp-content/uploads/2012/10/Puesto-Comida-Praga.jpg" />
+	        <p>{[{place.description}]}</p>
+	    </div>
+	</div>
+
+	<div class="col-md-3"></div>
+
+</div>
 
 @endsection

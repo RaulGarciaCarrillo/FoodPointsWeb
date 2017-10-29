@@ -53,7 +53,7 @@ class PlaceController extends Controller
         ->join('place_food', 'place.id', '=', 'place_food.place_id')
         ->join('foodType', 'place_food.foodType_id', '=', 'foodType.id')
         ->whereIn('foodType.id', array(1))
-        ->select(DB::raw('place.name as name1, place.image'))
+        ->select(DB::raw('place.name as placeName, place.image, place.description'))
         ->get();
     }
 

@@ -1,8 +1,4 @@
-var profile = angular.module("myApp", []).config(function($interpolateProvider) {
-    $interpolateProvider.startSymbol('{[{').endSymbol('}]}');
-});
-
-profile.controller("ctrlUser", function($scope) {
+myApp.controller("ctrlUser", function($scope) {
 
     $scope.items = [];
 

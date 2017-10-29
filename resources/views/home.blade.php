@@ -29,6 +29,7 @@
 
  <!-- Scripts -->
     <script src=" {{ asset('js/vue.js') }}"></script>
+    <script src= "https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.0/axios.min.js"></script>
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <!-- Plugin JavaScript -->

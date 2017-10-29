@@ -1,0 +1,3 @@
+-Todos los títulos deben de tener cada letra inicial en mayúscula
+-En los campos de texto, solo la primera palabra debe de estar en mayúscula
+-Todos los mensajes deben de tener punto al final

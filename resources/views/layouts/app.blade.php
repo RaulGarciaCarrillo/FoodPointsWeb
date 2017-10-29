@@ -35,6 +35,12 @@
                         <span class="icon-bar"></span>
                     </button>
 
+                     <a class="navbar-brand" >
+                        @yield('hamburger')
+                       
+                    </a>
+
+                    
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
                         Foodpoints
@@ -64,7 +70,7 @@
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Cerrar Sesión
+                                            Cerrar sesión
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -83,7 +89,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <!-- Scripts -->
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
 <!-- Plugin JavaScript -->

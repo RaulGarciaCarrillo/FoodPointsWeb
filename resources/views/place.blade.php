@@ -3,7 +3,10 @@
 @section('content')
 
 <div ng-controller="ctrlPlace" class="container-fluid">
-	<div class="col-md-3"></div>
+
+	<div class="col-md-3">
+		
+	</div>
 	
 	<div class="col-md-6" >
 	    <div ng-repeat="place in places track by $index">
@@ -24,7 +27,14 @@
 	    </div>
 	</div>
 
-	<div class="col-md-3"></div>
+	<div class="col-md-3">
+		
+		<h3>Tipos de comida</h3>
+		<div class="checkbox" ng-repeat="foodType in foodTypes track by $index">
+		  <label><input type="checkbox" ng-model="foodType.isChecked" ng-change="consultarPuestos(foodType)">{[{ foodType.name }]}</label>
+		</div>
+
+	</div>
 
 </div>
 

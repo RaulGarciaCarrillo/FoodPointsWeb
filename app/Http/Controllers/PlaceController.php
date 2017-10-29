@@ -24,9 +24,19 @@ class PlaceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($request)
     {
-        //
+        $obj = json_decode($request, true);
+
+        $place = new Place;
+        $place->name = $obj{'name'};
+        $place->address = $obj{'address'};
+        $place->latitude = $obj{'latitude'};
+        $place->longitude = $obj{'longitude'};
+        $place->description = $obj{'description'};
+      
+
+        $place->save();
     }
 
     /**
@@ -48,13 +58,23 @@ class PlaceController extends Controller
      */
     public function show($id)
     {
-         
-        return DB::table('place')
-        ->join('place_food', 'place.id', '=', 'place_food.place_id')
-        ->join('foodType', 'place_food.foodType_id', '=', 'foodType.id')
-        ->whereIn('foodType.id', array(1))
-        ->select(DB::raw('place.name as placeName, place.image, place.description'))
-        ->get();
+        $ids = explode(',', $id);
+        if($id == 0) {
+            return DB::table('place')
+            ->join('place_food', 'place.id', '=', 'place_food.place_id')
+            ->join('foodType', 'place_food.foodType_id', '=', 'foodType.id')
+            ->select(DB::raw('place.name as placeName, place.image, place.description'))
+            ->distinct()
+            ->get();
+        } else {
+            return DB::table('place')
+            ->join('place_food', 'place.id', '=', 'place_food.place_id')
+            ->join('foodType', 'place_food.foodType_id', '=', 'foodType.id')
+            ->whereIn('foodType.id', $ids)
+            ->select(DB::raw('place.name as placeName, place.image, place.description'))
+            ->distinct()
+            ->get();
+        }        
     }
 
     /**
@@ -90,6 +110,5 @@ class PlaceController extends Controller
     {
         //
     }
-
 
 }

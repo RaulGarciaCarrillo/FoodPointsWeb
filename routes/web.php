@@ -25,7 +25,6 @@ Route::get('/profile/{id}', 'UserController@show');
 
 Route::get('/place/{id}', 'PlaceController@show');
 
-
 Route::get('/profile', function () {
     return view('profile');
 });
@@ -34,5 +33,8 @@ Route::get('/place', function () {
     return view('place');
 });
 
+Route::get('/addPlace', function () {
+	return view('addPlace');
+});
 
-
+Route::post('/addPlace/{place}', 'PlaceController@create');

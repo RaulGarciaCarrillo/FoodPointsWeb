@@ -15,6 +15,12 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="css/navbar.css" rel="stylesheet"> 
 
+<<<<<<< HEAD
+    <style type="text/css">
+       
+    </style>
+=======
+>>>>>>> origin/master
 
 </head>
 <body>
@@ -94,6 +100,7 @@
     <script src="js/place.js"></script>
     <script src="js/addPlace.js"></script>
     <script src="js/user.js"></script>
+    <script src="js/favorite.js"></script>
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
     <script>

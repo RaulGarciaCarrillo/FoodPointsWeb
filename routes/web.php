@@ -25,6 +25,9 @@ Route::get('/profile/{id}', 'UserController@show');
 
 Route::get('/place/{id}', 'PlaceController@show');
 
+
+Route::get('/favorite/{id}', 'FavoriteController@show');
+
 Route::get('/profile', function () {
     return view('profile');
 });
@@ -35,6 +38,10 @@ Route::get('/place', function () {
 
 Route::get('/addPlace', function () {
 	return view('addPlace');
+});
+
+Route::get('/favorite', function () {
+    return view('favorite');
 });
 
 Route::post('/addPlace/{place}', 'PlaceController@create');

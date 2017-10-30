@@ -31,6 +31,7 @@ myApp.controller("ctrlPlace", function($scope) {
 
         axios.get('place/' + data).then(response => {
                 $scope.places = response.data;
+                console.log(response);
                 $scope.$digest();
             })
             .catch(error => {
@@ -41,6 +42,7 @@ myApp.controller("ctrlPlace", function($scope) {
     $scope.actualizarPuestos();
 
     axios.get('foodType').then(response => {
+        console.log(1);
             $scope.foodTypes = response.data;
             $scope.$digest();
         })

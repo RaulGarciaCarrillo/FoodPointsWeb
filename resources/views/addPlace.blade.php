@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div ng-controller="ctrlPlace" class="container-fluid">
+<div ng-controller="ctrlPlaceAdd" class="container-fluid" ng-init="initMaps()">
 
 	<div class="col-md-1">
 		
@@ -62,5 +62,4 @@
 	</div>
 
 </div>
-
 @endsection

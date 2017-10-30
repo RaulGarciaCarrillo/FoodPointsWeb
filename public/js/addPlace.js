@@ -1,19 +1,38 @@
-myApp.controller("ctrlPlace", function($scope) {
+myApp.controller("ctrlPlaceAdd", function($scope) {
 
     $scope.foodTypes = [];
     $scope.place = {};
+    var map;
+    var geocoder;
+    var infowindow;
+    var myMarker;
 
-    var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 14,
-        center: { lat: 25.721, lng: -100.3 }
-    });
-    var geocoder = new google.maps.Geocoder;
-    var infowindow = new google.maps.InfoWindow;
+    $scope.initMaps = function() {
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 14,
+            center: { lat: 25.721, lng: -100.3 }
+        });
+        geocoder = new google.maps.Geocoder;
+        infowindow = new google.maps.InfoWindow;
 
-    var myMarker = new google.maps.Marker({
-        position: new google.maps.LatLng(25.721, -100.3),
-        draggable: true
-    });
+        myMarker = new google.maps.Marker({
+            position: new google.maps.LatLng(25.721, -100.3),
+            draggable: true
+        });
+
+
+
+        google.maps.event.addListener(myMarker, 'dragend', function(evt) {
+            var lat = evt.latLng.lat().toFixed(3);
+            var lng = evt.latLng.lng().toFixed(3);
+            $scope.geocodeLatLng(geocoder, map, infowindow, lat, lng);
+        });
+
+
+        map.setCenter(myMarker.position);
+        myMarker.setMap(map);
+    }
+
 
     $scope.geocodeLatLng = function(geocoder, map, infowindow, plat, plng) {
         var latlng = { lat: parseFloat(plat), lng: parseFloat(plng) };
@@ -68,15 +87,6 @@ myApp.controller("ctrlPlace", function($scope) {
     };
 
 
-    google.maps.event.addListener(myMarker, 'dragend', function(evt) {
-        var lat = evt.latLng.lat().toFixed(3);
-        var lng = evt.latLng.lng().toFixed(3);
-        $scope.geocodeLatLng(geocoder, map, infowindow, lat, lng);
-    });
-
-
-    map.setCenter(myMarker.position);
-    myMarker.setMap(map);
 
     axios.get('foodType').then(response => {
             $scope.foodTypes = response.data;

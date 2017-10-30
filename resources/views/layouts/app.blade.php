@@ -15,12 +15,6 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="css/navbar.css" rel="stylesheet"> 
 
-<<<<<<< HEAD
-    <style type="text/css">
-       
-    </style>
-=======
->>>>>>> origin/master
 
 </head>
 <body>

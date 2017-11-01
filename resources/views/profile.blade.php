@@ -112,6 +112,9 @@
 	                                <button type="button" class="btn btn-danger">
 	                                    Cancelar
 	                                </button>
+	                                	
+									  <!-- Your share button code -->
+									  <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Compartir</a></div>
 	                            </div>
 	                        </div>
 
@@ -128,6 +131,38 @@
 <script src="vendor/jquery/jquery.min.js"></script>
 
 <script type="text/javascript">
+
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '145378952749171',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v2.10'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+/*FB.ui({
+			    method: 'share',
+			    picture:'http://miadventure.x10.mx/portadaMI2.png',
+			    href:'http://miadventure.x10.mx/',
+			    caption: 'Dead Hunting',
+			    quote: "My Score: " + score,
+			    hashtag: "#MiAdventure"
+			  }, function(response){});
+			  dialog2.dialog( "close" );	*/
+
 
 
 $(document).ready( function() {

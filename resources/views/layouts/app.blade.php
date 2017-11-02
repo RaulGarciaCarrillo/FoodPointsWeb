@@ -90,6 +90,7 @@
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDcmMO_FTpC4JUyd3h1CPulwOmtMo5yMC4"></script>
     <script src="js/angular.min.js"></script>
+    <script src="vendor/alertify/alertify.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/place.js"></script>
     <script src="js/addPlace.js"></script>
@@ -99,6 +100,9 @@
     <script src="js/favorite.js"></script>
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendor/alertify/css/alertify.css">
+
+
     <script>
     function openNav() {
         document.getElementById("mySidenav").style.width = "250px";

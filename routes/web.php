@@ -25,7 +25,6 @@ Route::get('/profile/{id}', 'UserController@show');
 
 Route::get('/place/{id}', 'PlaceController@show');
 
-
 Route::get('/favorite/{id}', 'FavoriteController@show');
 
 Route::get('/profile', function () {
@@ -34,19 +33,23 @@ Route::get('/profile', function () {
 
 Route::get('/place', function () {
     return view('place');
-});
+})->middleware('auth');
 
 Route::get('/addPlace', function () {
 	return view('addPlace');
-});
+})->middleware('auth');
 
 Route::get('/favorite', function () {
     return view('favorite');
 });
 
+<<<<<<< HEAD
 Route::get('/editPlace', function () {
     return view('editPlace');
 });
 
 
 Route::post('/addPlace/{place}', 'PlaceController@create');
+=======
+Route::post('/addPlace/add', 'PlaceController@create');
+>>>>>>> origin/master

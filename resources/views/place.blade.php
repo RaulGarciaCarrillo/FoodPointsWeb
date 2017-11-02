@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('home')
 
-@section('content')
+@section('main-content')
 
 <div ng-controller="ctrlPlace" class="container-fluid">
 

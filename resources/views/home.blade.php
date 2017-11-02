@@ -14,10 +14,10 @@
 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="{{ url('/place') }}">Puestos</a>
-  <a href="#">Favoritos</a>
-  <a href="#">Agregar Puesto</a>
-  <a href="{{ url('/profile') }}">Perfil</a>
+  <a class="menu" href="/place">Puestos</a>
+  <a class="menu" href="/favorite">Favoritos</a>
+  <a class="menu" href="/addPlace">Agregar Puesto</a>
+  <a class="menu" href="/profile">Perfil</a>
 </div>
 
     <div class="container-fluid" style="height: 560px; overflow-y: auto;">

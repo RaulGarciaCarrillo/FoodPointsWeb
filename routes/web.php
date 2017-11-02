@@ -44,4 +44,9 @@ Route::get('/favorite', function () {
     return view('favorite');
 });
 
+Route::get('/editPlace', function () {
+    return view('editPlace');
+});
+
+
 Route::post('/addPlace/{place}', 'PlaceController@create');

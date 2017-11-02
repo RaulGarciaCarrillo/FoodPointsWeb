@@ -38,44 +38,32 @@
             {{ session('status') }}
         </div>
     @endif
-
-
-                <div class="file-loading">
-                    <input id="avatar-1" name="avatar-1" type="file" required>
-                </div>
-
-            
+  
 	<div class="col-md-3"></div>
 	<div ng-controller="ctrlUser">
-		 <div class="row" ng-repeat="x in items track by $index">
+		 <div class="row" ng-repeat="user in items track by $index">
 	        <div class="col-md-8 col-md-offset-2">
 	            <div class="panel panel-default">
 	                <div class="panel-heading">Modificar Perfil</div>
 	                <div class="panel-body">
-	                	<img width="100%"  height="2px" src="http://viajerosblog.com/wp-content/uploads/2012/10/Puesto-Comida-Praga.jpg" />
 	                    <form class="form-horizontal" method="" action=" ">
 	                        {{ csrf_field() }}
 
 	                        <div class="form-group">
 	                        	<div class="col-md-4"> 
-	                        		<img id='img-upload' width="200px"  height="200px" src="http://viajerosblog.com/wp-content/uploads/2012/10/Puesto-Comida-Praga.jpg" style=""/>
+	                        		<img id='img-upload' width="200px"  height="200px" src="data:image/png;base64,{[{user.image}]}" style=""/>
 	                        	</div>
 						        <label for="imgProfile" class="col-md-3 control-label">Imagen:</label>
 						        <div class="col-md-5">
 						        <div class="input-group">
-						            <span class="input-group-btn">
-						                <span class="btn btn-default btn-file">
-						                    Subir <input type="file" id="imgProfile">
-						                </span>
-						            </span>
-						            <input type="text" class="form-control" readonly>
+						           <input type="file" class="form-control-file" id="file" aria-describedby="fileHelp" onchange="angular.element(this).scope().getFile()" required>
 						        </div>
 						    </div>
 
 						    <div style="margin-top: 6%">
 						    <label for="email" class="col-md-3 control-label">Correo:</label>
 	                            <div class="col-md-5">
-	                                <input id="email" type="email" class="form-control" name="email" ng-value="x.email" disabled="true">
+	                                <input id="email" type="email" class="form-control" name="email" ng-value="user.email" disabled="true">
 	                            </div>
                             </div>
 
@@ -83,7 +71,7 @@
 	                            <label for="name" class="col-md-3 control-label">Nombre:</label>
 
 	                            <div class="col-md-5">
-	                                <input id="name" type="text" class="form-control" name="name" ng-value="x.name" required autofocus>
+	                                <input id="name" type="text" class="form-control" name="name" ng-value="user.name" required autofocus>
 
 	                                @if ($errors->has('name'))
 	                                    <span class="help-block">
@@ -114,19 +102,22 @@
 	                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" >
 	                            </div>
 	                        </div>
-
 						</div>
 
 	                        <div class="form-group">
-	                            <div class="col-md-6 col-md-offset-4">
+	                            <div class="col-md-5 col-md-offset-7">
 	                                <button type="submit" class="btn btn-success">
-	                                    Guardar
+	                                    Guardar	
 	                                </button>
 	                                <button type="button" class="btn btn-danger">
 	                                    Cancelar
 	                                </button>
+	                                	
+									  <!-- Your share button code -->
+									  <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Compartir</a></div>
 	                            </div>
 	                        </div>
+
 	                    </form>
 	                </div>
 	            </div>
@@ -134,10 +125,51 @@
     	</div>
 	</div>
  <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
 
-<script>
+@endsection
+
+<script src="vendor/jquery/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '145378952749171',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v2.10'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+/*FB.ui({
+			    method: 'share',
+			    picture:'http://miadventure.x10.mx/portadaMI2.png',
+			    href:'http://miadventure.x10.mx/',
+			    caption: 'Dead Hunting',
+			    quote: "My Score: " + score,
+			    hashtag: "#MiAdventure"
+			  }, function(response){});
+			  dialog2.dialog( "close" );	*/
+
+
+
 $(document).ready( function() {
+
+
+	
+
     	$(document).on('change', '.btn-file :file', function() {
 		var input = $(this),
 			label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
@@ -174,7 +206,6 @@ $(document).ready( function() {
 	});
 </script>
 
-@endsection
 
 
 

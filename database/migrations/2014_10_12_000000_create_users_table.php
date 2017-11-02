@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->tinyInteger('active')->default(1);
-            $table->binary('image')->nullable(); // for blob
+            $table->longText('image')->nullable(); // for blob
             $table->rememberToken();
             $table->timestamps();
         });

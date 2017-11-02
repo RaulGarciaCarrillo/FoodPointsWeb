@@ -50,3 +50,12 @@ Route::post('/addPlace/add', 'PlaceController@create');
 Route::get('/test', function() {
 	return Auth::user()->id;
 });
+
+Route::get('/editPlace', function () {
+    return view('editPlace');
+});
+
+Route::post('/addPlace/{place}', 'PlaceController@create');
+
+Route::post('/addPlace/add', 'PlaceController@create');
+

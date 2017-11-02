@@ -94,6 +94,7 @@
     <script src="js/main.js"></script>
     <script src="js/place.js"></script>
     <script src="js/addPlace.js"></script>
+     <script src="js/editPlace.js"></script>
     <script src="js/user.js"></script>
     <script src="js/facebook.js"></script>
     <script src="js/favorite.js"></script>

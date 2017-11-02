@@ -18,6 +18,7 @@ class CreateCommentTable extends Migration
             $table->integer('users_id')->unsigned();
             $table->integer('place_id')->unsigned();
             $table->string('comment');
+            $table->dateTime('date');
         });
 
         Schema::table('comment', function($table) {

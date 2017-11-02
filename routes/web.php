@@ -23,6 +23,8 @@ Route::get('/foodType', 'foodTypeController@get')->name('foodType');
 
 Route::get('/profile/{id}', 'UserController@show');
 
+Route::post('/profile/editar', 'UserController@editar');
+
 Route::get('/place/{id}', 'PlaceController@show');
 
 Route::get('/favorite/{id}', 'FavoriteController@show');
@@ -44,3 +46,7 @@ Route::get('/favorite', function () {
 });
 
 Route::post('/addPlace/add', 'PlaceController@create');
+
+Route::get('/test', function() {
+	return Auth::user()->id;
+});

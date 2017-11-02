@@ -45,8 +45,20 @@
 
 			<div class="form-group row">
 			    <label for="exampleInputFile">Fotograf&iacute;a del Puesto</label>
-			    <input type="file" class="form-control-file" id="file" aria-describedby="fileHelp" required ng-model="filename" valid-file>
+			    
+
+			    <div class="input-group">
+	                <label class="input-group-btn">
+	                    <span class="btn btn-primary">
+	                        Browse… <input type="file" style="display: none;" multiple="" id="file" class="file"aria-describedby="fileHelp" ng-model="filename" valid-file>
+	                    </span>
+	                </label>
+	                <input id="fileAux" type="text" class="form-control" readonly="">
+	            </div>
+
 			</div>
+
+
 
 			<button type="submit"
 	                 ng-click="agregar()"

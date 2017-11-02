@@ -21,11 +21,28 @@
     display: block;
 }
 
-#img-upload{
-    width: 100%;
-}
 
 .form-group{}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
 
 </style>
 
@@ -41,12 +58,12 @@
   
 	<div class="col-md-3"></div>
 	<div ng-controller="ctrlUser">
-		 <div class="row" ng-repeat="user in items track by $index">
+		 <div class="row">
 	        <div class="col-md-8 col-md-offset-2">
 	            <div class="panel panel-default">
 	                <div class="panel-heading">Modificar Perfil</div>
 	                <div class="panel-body">
-	                    <form class="form-horizontal" method="" action=" ">
+	                    <form class="form-horizontal" name="myForm" novalidate>
 	                        {{ csrf_field() }}
 
 	                        <div class="form-group">
@@ -56,14 +73,19 @@
 						        <label for="imgProfile" class="col-md-3 control-label">Imagen:</label>
 						        <div class="col-md-5">
 						        <div class="input-group">
-						           <input type="file" class="form-control-file" id="file" aria-describedby="fileHelp" onchange="angular.element(this).scope().getFile()" required>
-						        </div>
+					                <label class="input-group-btn">
+					                    <span class="btn btn-primary">
+					                        Browse… <input type="file" style="display: none;" multiple="" id="file" class="file"aria-describedby="fileHelp">
+					                    </span>
+					                </label>
+					                <input id="fileAux" type="text" class="form-control" readonly="">
+					            </div>
 						    </div>
 
 						    <div style="margin-top: 6%">
 						    <label for="email" class="col-md-3 control-label">Correo:</label>
 	                            <div class="col-md-5">
-	                                <input id="email" type="email" class="form-control" name="email" ng-value="user.email" disabled="true">
+	                                <input id="email" type="email" class="form-control" name="email" ng-model="user.email" disabled="true">
 	                            </div>
                             </div>
 
@@ -71,7 +93,7 @@
 	                            <label for="name" class="col-md-3 control-label">Nombre:</label>
 
 	                            <div class="col-md-5">
-	                                <input id="name" type="text" class="form-control" name="name" ng-value="user.name" required autofocus>
+	                                <input id="name" type="text" class="form-control" name="name" ng-model="user.name" required autofocus>
 
 	                                @if ($errors->has('name'))
 	                                    <span class="help-block">
@@ -85,7 +107,7 @@
 	                            <label for="password" class="col-md-3 control-label">Contraseña:</label>
 
 	                            <div class="col-md-5">
-	                                <input id="password" type="password" class="form-control" name="password" >
+	                                <input ng-model="newPassword" id="password" type="password" class="form-control" name="password" >
 
 	                                @if ($errors->has('password'))
 	                                    <span class="help-block">
@@ -99,14 +121,16 @@
 	                            <label for="password-confirm" class="col-md-3 control-label">Confirmar contraseña:</label>
 
 	                            <div class="col-md-5">
-	                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" >
+	                                <input ng-model="newPasswordConfirm" id="password-confirm" type="password" class="form-control" name="password_confirmation" >
 	                            </div>
 	                        </div>
 						</div>
 
 	                        <div class="form-group">
 	                            <div class="col-md-5 col-md-offset-7">
-	                                <button type="submit" class="btn btn-success">
+	                                <button ng-click="actualizar()"
+	                                		ng-disabled="myForm.$invalid"
+	                                		class="btn btn-success">
 	                                    Guardar	
 	                                </button>
 	                                <button type="button" class="btn btn-danger">

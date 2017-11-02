@@ -100,6 +100,7 @@
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="vendor/alertify/css/alertify.css">
+    <link rel="stylesheet" href="vendor/fileInput/fileInput.css">
 
 
     <script>

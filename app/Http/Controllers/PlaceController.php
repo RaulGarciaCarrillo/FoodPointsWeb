@@ -3,12 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Place;
+use App\PlaceFood;
 use Illuminate\Http\Request;
 use DB;
 use App\Quotation;
 
 class PlaceController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -24,19 +35,31 @@ class PlaceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($request)
+    public function create(Request $request)
     {
-        $obj = json_decode($request, true);
+        $file_tmp= $_FILES['image']['tmp_name'];
+        $data = file_get_contents( $file_tmp );
+        $base64 = base64_encode($data);
 
         $place = new Place;
-        $place->name = $obj{'name'};
-        $place->address = $obj{'address'};
-        $place->latitude = $obj{'latitude'};
-        $place->longitude = $obj{'longitude'};
-        $place->description = $obj{'description'};
-      
-
+        $place->name = $request->input('name');
+        $place->address = $request->input('address');
+        $place->latitude = $request->input('latitude');
+        $place->longitude = $request->input('longitude');
+        $place->description = $request->input('description');
+        $place->image = $base64;      
         $place->save();
+        
+        $foodTypeArray = explode(",", $request->input('foodType'));
+
+        foreach ($foodTypeArray  as &$valor) {
+            $placeFood = new PlaceFood;
+            $placeFood->place_id = $place->id;
+            $placeFood->foodType_id = $valor;
+            $placeFood->save();
+        }
+
+        return $place;
     }
 
     /**

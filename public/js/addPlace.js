@@ -2,6 +2,7 @@ myApp.controller("ctrlPlaceAdd", function($scope) {
 
     $scope.foodTypes = [];
     $scope.place = {};
+    $scope.foodTypesSelected = [];
     var map;
     var geocoder;
     var infowindow;
@@ -56,37 +57,53 @@ myApp.controller("ctrlPlaceAdd", function($scope) {
     };
 
     $scope.agregar = function() {
-        console.log($scope.place);
+
+        if ($scope.foodTypesSelected.length == 0) {
+            alertify.set('notifier', 'position', 'top-right');
+            alertify.notify('Debe seleccionar al menos un tipo de comida', 'error', 5, function() {
+                //console.log('dismissed');
+            });
+            return;
+        }
+
+        var formData = new FormData();
+        var imagefile = document.querySelector('#file');
+
+        formData.append('image', imagefile.files[0]);
+        formData.append('name', $scope.place.name);
+        formData.append('address', $scope.place.address);
+        formData.append('latitude', $scope.place.latitude);
+        formData.append('longitude', $scope.place.longitude);
+        formData.append('description', $scope.place.description);
+        formData.append('foodType', $scope.foodTypesSelected);
 
         var strPlace = JSON.stringify($scope.place);
-        axios.post('addPlace/' + strPlace).then(response => {
-                console.log(response);
+        axios.defaults.headers.post['Content-Type'] = 'multipart/form-data';
+        axios.post('addPlace/add', formData)
+            .then(response => {
+                $scope.place = {};
+                $scope.foodTypesSelected = [];
+                $scope.$digest();
+                alertify.set('notifier', 'position', 'top-right');
+                alertify.notify('Puesto agregado exitosamente', 'success', 5, function() {
+                    //console.log('dismissed');
+                });
             })
             .catch(error => {
                 console.log(error);
             });
     };
 
-    $scope.getBase64 = function(file) {
-        var reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = function() {
-            //$scope.place.image = reader.result;
-            //console.log(reader.result);
-        };
-        reader.onerror = function(error) {
-            console.log('Error: ', error);
-        };
-    };
+    $scope.actualizarTipos = function(foodType) {
 
-    $scope.getFile = function() {
-        var files = document.getElementById('file').files;
-        if (files.length > 0) {
-            $scope.getBase64(files[0]);
+        if (foodType.isChecked) {
+            $scope.foodTypesSelected.push(foodType.id);
+        } else {
+            var toDel = $scope.foodTypesSelected.indexOf(foodType);
+            $scope.foodTypesSelected.splice(toDel);
         }
+
     };
-
-
 
     axios.get('foodType').then(response => {
             $scope.foodTypes = response.data;
@@ -96,4 +113,21 @@ myApp.controller("ctrlPlaceAdd", function($scope) {
             console.log(error);
         });
 
+});
+
+myApp.directive('validFile', function() {
+    return {
+        require: 'ngModel',
+        link: function(scope, el, attrs, ngModel) {
+            ngModel.$render = function() {
+                ngModel.$setViewValue(el.val());
+            };
+
+            el.bind('change', function() {
+                scope.$apply(function() {
+                    ngModel.$render();
+                });
+            });
+        }
+    };
 });

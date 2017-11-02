@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('home')
 
-@section('content')
+@section('main-content')
 
 <div ng-controller="ctrlPlaceAdd" class="container-fluid" ng-init="initMaps()">
 
@@ -34,13 +34,18 @@
 			<div class="form-group row">
 				<label for="example-text-input" class="col-2 col-form-label">Tipos de comida</label>
 				<div class="checkbox" ng-repeat="foodType in foodTypes track by $index">
-			  <label><input type="checkbox" ng-model="foodType.isChecked" ng-change="consultarPuestos(foodType)">{[{ foodType.name }]}</label>
+			  <label>
+				  <input 
+						 type="checkbox" 
+						 ng-model="foodType.isChecked" 
+						 ng-change="actualizarTipos(foodType)">{[{ foodType.name }]}
+			  </label>
 				</div>
 			</div>
 
 			<div class="form-group row">
 			    <label for="exampleInputFile">Fotograf&iacute;a del Puesto</label>
-			    <input type="file" class="form-control-file" id="file" aria-describedby="fileHelp" onchange="angular.element(this).scope().getFile()" required>
+			    <input type="file" class="form-control-file" id="file" aria-describedby="fileHelp" required ng-model="filename" valid-file>
 			</div>
 
 			<button type="submit"

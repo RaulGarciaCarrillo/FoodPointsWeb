@@ -48,8 +48,6 @@
 
 @section('main-content')
 
-
-
  @if (session('status'))
         <div class="alert alert-success">
             {{ session('status') }}
@@ -70,6 +68,7 @@
 	                        	<div class=""> 
 	                        		<img id='img-upload' width="200px"  height="200px" src="data:image/png;base64,{[{user.image}]}" class="img-responsive">
 	                        	</div>
+
 	                        </div>
 	                        <div class="col-md-8">
 	                        <div class="form-group">
@@ -77,7 +76,7 @@
 						        	<div class="col-md-9">       
 						                <label class="input-group-btn">
 						                    <span class="btn btn-primary"style="position:absolute">
-						                        Browse… <input type="file" style="display: none;" multiple="" id="file" class="file"aria-describedby="fileHelp">
+						                        Buscar <input type="file" style="display: none;" multiple="" id="file" class="file"aria-describedby="fileHelp">
 						                    </span>
 						                </label>
 						                <input id="fileAux" type="text" class="form-control" readonly="" style="padding-left:96px">
@@ -134,9 +133,9 @@
 	                                		class="btn btn-success">
 	                                    Guardar	
 	                                </button>
-	                                <button type="button" class="btn btn-danger">
+	                                <a class="btn btn-danger" href="{{ url('/place') }}">
 	                                    Cancelar
-	                                </button>
+	                                </a>
 	                                	
 									  <!-- Your share button code -->
 									  <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Compartir</a></div>
@@ -160,8 +159,6 @@
 <script src="vendor/jquery/jquery.min.js"></script>
 
 <script type="text/javascript">
-
-
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '145378952749171',
@@ -191,48 +188,6 @@
 			    hashtag: "#MiAdventure"
 			  }, function(response){});
 			  dialog2.dialog( "close" );	*/
-
-
-
-$(document).ready( function() {
-
-
-	
-
-    	$(document).on('change', '.btn-file :file', function() {
-		var input = $(this),
-			label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-		input.trigger('fileselect', [label]);
-		});
-
-		$('.btn-file :file').on('fileselect', function(event, label) {
-		    
-		    var input = $(this).parents('.input-group').find(':text'),
-		        log = label;
-		    
-		    if( input.length ) {
-		        input.val(log);
-		    } else {
-		        if( log ) alert(log);
-		    }
-	    
-		});
-		function readURL(input) {
-		    if (input.files && input.files[0]) {
-		        var reader = new FileReader();
-		        
-		        reader.onload = function (e) {
-		            $('#img-upload').attr('src', e.target.result);
-		        }
-		        
-		        reader.readAsDataURL(input.files[0]);
-		    }
-		}
-
-		$("#imgInp").change(function(){
-		    readURL(this);
-		}); 	
-	});
 </script>
 
 

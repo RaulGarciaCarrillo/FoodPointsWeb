@@ -9,7 +9,7 @@
 
 
 @section('hamburger')
-    <span style="font-size:30px;cursor:pointer; margin-left:-350%;" onclick="openNav()">&#9776; </span>
+    <span style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776; </span>
 @endsection
 
 <div id="mySidenav" class="sidenav">

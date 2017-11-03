@@ -66,33 +66,35 @@
 	                    <form class="form-horizontal" name="myForm" novalidate>
 	                        {{ csrf_field() }}
 
-	                        <div class="form-group">
-	                        	<div class="col-md-4"> 
-	                        		<img id='img-upload' width="200px"  height="200px" src="data:image/png;base64,{[{user.image}]}" style=""/>
+	                        <div class="col-md-4">
+	                        	<div class=""> 
+	                        		<img id='img-upload' width="200px"  height="200px" src="data:image/png;base64,{[{user.image}]}" class="img-responsive">
 	                        	</div>
-						        <label for="imgProfile" class="col-md-3 control-label">Imagen:</label>
-						        <div class="col-md-5">
-						        <div class="input-group">
-					                <label class="input-group-btn">
-					                    <span class="btn btn-primary">
-					                        Browse… <input type="file" style="display: none;" multiple="" id="file" class="file"aria-describedby="fileHelp">
-					                    </span>
-					                </label>
-					                <input id="fileAux" type="text" class="form-control" readonly="">
-					            </div>
-						    </div>
+	                        </div>
+	                        <div class="col-md-8">
+	                        <div class="form-group">
+						        	<label for="imgProfile" class="col-md-3 control-label">Imagen:</label>
+						        	<div class="col-md-9">       
+						                <label class="input-group-btn">
+						                    <span class="btn btn-primary"style="position:absolute">
+						                        Browse… <input type="file" style="display: none;" multiple="" id="file" class="file"aria-describedby="fileHelp">
+						                    </span>
+						                </label>
+						                <input id="fileAux" type="text" class="form-control" readonly="" style="padding-left:96px">
+						            </div>
+					       	</div>
 
-						    <div style="margin-top: 6%">
-						    <label for="email" class="col-md-3 control-label">Correo:</label>
-	                            <div class="col-md-5">
+						    <div class="form-group">
+						    	<label for="email" class="col-md-3 control-label">Correo:</label>
+	                            <div class="col-md-9">
 	                                <input id="email" type="email" class="form-control" name="email" ng-model="user.email" disabled="true">
 	                            </div>
                             </div>
 
-                            <div style="margin-top: 12%;">
+                            <div class="form-group">
 	                            <label for="name" class="col-md-3 control-label">Nombre:</label>
 
-	                            <div class="col-md-5">
+	                            <div class="col-md-9">
 	                                <input id="name" type="text" class="form-control" name="name" ng-model="user.name" required autofocus>
 
 	                                @if ($errors->has('name'))
@@ -103,10 +105,10 @@
 	                            </div>
 	                        </div>
 
-	                         <div style=" margin-top: 18%">
+	                         <div class="form-group">
 	                            <label for="password" class="col-md-3 control-label">Contraseña:</label>
 
-	                            <div class="col-md-5">
+	                            <div class="col-md-9">
 	                                <input ng-model="newPassword" id="password" type="password" class="form-control" name="password" >
 
 	                                @if ($errors->has('password'))
@@ -117,17 +119,16 @@
 	                            </div>
 	                        </div>
 
-	                        <div>
+	                        <div class="form-group">
 	                            <label for="password-confirm" class="col-md-3 control-label">Confirmar contraseña:</label>
 
-	                            <div class="col-md-5">
+	                            <div class="col-md-9">
 	                                <input ng-model="newPasswordConfirm" id="password-confirm" type="password" class="form-control" name="password_confirmation" >
 	                            </div>
 	                        </div>
-						</div>
 
 	                        <div class="form-group">
-	                            <div class="col-md-5 col-md-offset-7">
+	                            <div class="col-md-12">
 	                                <button ng-click="actualizar()"
 	                                		ng-disabled="myForm.$invalid"
 	                                		class="btn btn-success">
@@ -141,6 +142,10 @@
 									  <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Compartir</a></div>
 	                            </div>
 	                        </div>
+
+						</div>
+						</div>
+	                        
 
 	                    </form>
 	                </div>

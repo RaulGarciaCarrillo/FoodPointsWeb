@@ -19,7 +19,7 @@ myApp.controller("ctrlUser", function($scope) {
 
         if($scope.newPassword !== $scope.newPasswordConfirm){
         	alertify.set('notifier', 'position', 'top-right');
-            alertify.notify('Las contraseñas capturadas no coinciden', 'error', 5, function() {
+            alertify.notify('Las contraseñas capturadas no coinciden.', 'error', 5, function() {
                 //console.log('dismissed');
             });
             return;
@@ -31,7 +31,7 @@ myApp.controller("ctrlUser", function($scope) {
 
         axios.post('profile/editar', formData).then(response => {
                 alertify.set('notifier', 'position', 'top-right');
-                alertify.notify('Perfil actualizado exitosamente', 'success', 5, function() {
+                alertify.notify('Perfil actualizado exitosamente.', 'success', 5, function() {
                     //console.log('dismissed');
                 });         
                 $scope.user.image = response.data.image;

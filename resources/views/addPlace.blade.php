@@ -11,28 +11,28 @@
 	<div class="col-md-4" >
 	   <form name="myForm" novalidate>
 		   <div class="form-group row">
-			  <label for="example-text-input" class="col-2 col-form-label">Nombre Puesto</label>
+			  <label for="example-text-input" class="col-2 col-form-label">Nombre del puesto:</label>
 			  <div class="col-10">
 			    <input class="form-control" type="text" ng-model="place.name" required>
 			  </div>
 			</div>
 			
 			<div class="form-group row">
-			  <label for="example-text-input" class="col-2 col-form-label">Descripci&oacute;n</label>
+			  <label for="example-text-input" class="col-2 col-form-label">Descripci&oacute;n:</label>
 			  <div class="col-10">
 			    <input class="form-control" type="text" ng-model="place.description" required>
 			  </div>
 			</div>
 
 			<div class="form-group row">
-			  <label for="example-text-input" class="col-2 col-form-label">Direcci&oacute;n</label>
+			  <label for="example-text-input" class="col-2 col-form-label">Direcci&oacute;n:</label>
 			  <div class="col-10">
 			    <input class="form-control" type="text" ng-model="place.address" disabled required>
 			  </div>
 			</div>
 
 			<div class="form-group row">
-				<label for="example-text-input" class="col-2 col-form-label">Tipos de comida</label>
+				<label for="example-text-input" class="col-2 col-form-label">Tipos de comida:</label>
 				<div class="checkbox" ng-repeat="foodType in foodTypes track by $index">
 			  <label>
 				  <input 
@@ -44,29 +44,27 @@
 			</div>
 
 			<div class="form-group row">
-			    <label for="exampleInputFile">Fotograf&iacute;a del Puesto</label>
-			    
-
+			    <label for="exampleInputFile">Fotograf&iacute;a del puesto:</label>
 			    <div class="input-group">
 	                <label class="input-group-btn">
 	                    <span class="btn btn-primary">
-	                        Browse… <input type="file" style="display: none;" multiple="" id="file" class="file"aria-describedby="fileHelp" ng-model="filename" valid-file>
+	                        Buscar… <input type="file" style="display: none;" multiple="" id="file" class="file"aria-describedby="fileHelp" ng-model="filename" valid-file>
 	                    </span>
 	                </label>
 	                <input id="fileAux" type="text" class="form-control" readonly="">
 	            </div>
-
 			</div>
-
 
 
 			<button type="submit"
 	                 ng-click="agregar()"
-	                 style="width: 25%; "
-	                 class="btn btn-primary"
+	                 class="btn btn-success"
 	                 ng-disabled="myForm.$invalid">
 	             Agregar
 	        </button>
+            <a class="btn btn-danger" href="{{ url('/place') }}">
+                Cancelar
+            </a>
         </form>
 	</div>
 

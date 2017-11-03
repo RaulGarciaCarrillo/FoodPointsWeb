@@ -60,7 +60,7 @@ myApp.controller("ctrlPlaceAdd", function($scope) {
 
         if ($scope.foodTypesSelected.length == 0) {
             alertify.set('notifier', 'position', 'top-right');
-            alertify.notify('Debe seleccionar al menos un tipo de comida', 'error', 5, function() {
+            alertify.notify('Debe seleccionar al menos un tipo de comida.', 'error', 5, function() {
                 //console.log('dismissed');
             });
             return;
@@ -85,7 +85,7 @@ myApp.controller("ctrlPlaceAdd", function($scope) {
                 $scope.foodTypesSelected = [];
                 $scope.$digest();
                 alertify.set('notifier', 'position', 'top-right');
-                alertify.notify('Puesto agregado exitosamente', 'success', 5, function() {
+                alertify.notify('Puesto agregado exitosamente.', 'success', 5, function() {
                     //console.log('dismissed');
                 });
             })

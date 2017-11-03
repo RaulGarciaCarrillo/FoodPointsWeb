@@ -31,7 +31,7 @@ Route::get('/favorite/{id}', 'FavoriteController@show');
 
 Route::get('/profile', function () {
     return view('profile');
-});
+})->middleware('auth');
 
 Route::get('/place', function () {
     return view('place');
@@ -43,16 +43,20 @@ Route::get('/addPlace', function () {
 
 Route::get('/favorite', function () {
     return view('favorite');
-});
+})->middleware('auth');
+
+Route::get('/editPlace', function () {
+    return view('editPlace');
+})->middleware('auth');
+
+Route::get('/viewPlace', function () {
+    return view('viewPlace');
+})->middleware('auth');
 
 Route::post('/addPlace/add', 'PlaceController@create');
 
 Route::get('/test', function() {
 	return Auth::user()->id;
-});
-
-Route::get('/editPlace', function () {
-    return view('editPlace');
 });
 
 Route::post('/addPlace/{place}', 'PlaceController@create');

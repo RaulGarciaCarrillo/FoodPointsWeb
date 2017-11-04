@@ -25,7 +25,7 @@
 		          <i class="fa fa-heart-o fa-2x" aria-hidden="true"></i>
 		        </div>
 
-		        <img width="90%" src="data:image/png;base64,{[{place.image}]}" />
+		         <a href="{{ url('/viewPlace') }}"><img width="90%" src="data:image/png;base64,{[{place.image}]}" /></a>
 		        <p id="description">{[{place.description}]}</p>
 		    </li>
 		</ul>

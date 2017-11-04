@@ -22,7 +22,7 @@
 	          <i class="fa fa-heart-o fa-2x" aria-hidden="true"></i>
 	        </div>
 
-	        <img width="100%" src="data:image/png;base64,{[{place.image}]}" />
+	        <a href="/viewPlace"><img width="100%" src="data:image/png;base64,{[{place.image}]}" /></a>
 	        <p>{[{place.description}]}</p>
 	    </div>
 	</div>

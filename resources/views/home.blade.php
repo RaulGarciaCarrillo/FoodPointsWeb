@@ -17,7 +17,7 @@
   <a class="menu" href="{{ url('/place') }}">Puestos</a>
   <a class="menu" href="{{ url('/favorite') }}">Favoritos</a>
   <a class="menu" href="{{ url('/addPlace') }}">Agregar Puesto</a>
-  <a class="menu" href="{{ url('/profilep') }}">Perfil</a>
+  <a class="menu" href="{{ url('/profile') }}">Perfil</a>
 </div>
 
     <div class="container-fluid" style="height: 560px; overflow-y: auto;">

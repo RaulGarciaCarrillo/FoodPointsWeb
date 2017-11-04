@@ -6,6 +6,7 @@ use App\Place;
 use Illuminate\Http\Request;
 use DB;
 use App\Quotation;
+use Auth;
 
 class favoriteController extends Controller
 {
@@ -51,7 +52,7 @@ class favoriteController extends Controller
         return DB::table('place')
         ->join('favorite', 'place.id', '=', 'favorite.place_id')
         ->join('users', 'users.id', '=', 'favorite.users_id')
-        ->where('users.id', '=', $id)
+        ->where('users.id', '=', Auth::user()->id)
         ->select(DB::raw('place.name as placeName, place.image, place.description'))
         ->get();
     }

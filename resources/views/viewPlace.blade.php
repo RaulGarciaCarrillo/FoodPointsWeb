@@ -23,8 +23,8 @@ textarea {
 }
 
 .blog-comment{
-    padding-left: 15%;
-  padding-right: 15%;
+    padding-left: 2%;
+    padding-right: 2%;
 }
 
 .blog-comment ul{
@@ -93,6 +93,10 @@ textarea {
   line-height: 30px;
   font-weight: 800;
 }
+
+h2 {
+   text-align: center;
+}
 </style>
 
 @section('main-content')
@@ -102,51 +106,50 @@ textarea {
         </div>
     @endif
 
-<div ng-controller="ctrlPlaceEdit" class="container-fluid" ng-init="initMaps()">
+<div ng-controller="ctrlPlaceView" class="container-fluid" ng-init="initMaps()">
+
+    <div class="col-md-12">
+       <h2 class="text-center">{[{place.placeName}]}</h2>
+    </div>
 
     <div class="col-md-1"> 
     </div>
     
-    <div class="col-md-4" >
-           <div class="form-group row">
-              <label for="example-text-input" class="col-2 col-form-label">Nombre del puesto:</label>
-              <div class="col-10">
-               
-              </div>
-            </div>
-            
-            <div class="form-group row">
-              <label for="example-text-input" class="col-2 col-form-label">Descripci&oacute;n:</label>
-              <div class="col-10">
-                
-              </div>
-            </div>
+    <div class="col-md-4"> 
+       <div class="row">
+        <label for="example-text-input" class="col-2 col-form-label">Tipos de comida:</label>
+        <ul class="col-md-12">
+            <li class="thumbnail col-md-3 col-xs-3" ng-repeat="foodType in foodTypes track by $index" style="margin-bottom: 1%">
+                <img ng-src="{[{foodType.src}]}" alt="{[{ foodType.name }]}" title="{[{ foodType.name }]} " height="200" width="200">
+            </li>
+        </ul>
+      </div>
 
-            <div class="form-group row">
-              <label for="example-text-input" class="col-2 col-form-label">Direcci&oacute;n:</label>
-              <div class="col-10">
-                <input class="form-control" type="text" ng-model="place.address" disabled required>
-              </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="example-text-input" class="col-2 col-form-label">Tipos de comida:</label>
-                <div class="checkbox" ng-repeat="foodType in foodTypes track by $index">
-              <label><input type="checkbox" disabled="true" ng-model="foodType.isChecked" ng-change="consultarPuestos(foodType)">{[{ foodType.name }]}</label>
-                </div>
-            </div>
-          
-          <div class="form-group row">
-            <label for="exampleInputFile">Fotograf&iacute;a del puesto:</label>
-            <div class="input-group">
-               <img id='img-upload' width="200px"  height="200px" src="data:image/png;base64,{[{user.image}]}" style=""/>
-             </div>
-          </div>
+      <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Direcci&oacute;n:</label>
+        <div id="map" style="width: 97%; height: 50%; border: 1px solid #DD1818;"></div>
+        <div class="col-9">
+          <textarea class="form-control" type="text" ng-model="place.adrees"  style="width:97%"> 
+          </textarea>
+        </div>
+      </div>
 
     </div>
 
-    <div class="col-md-6"  >        
-        <div id="map" style="width: 100%; height: 500px; border: 1px solid #DD1818;"></div>
+    <div class="col-md-6"> 
+      <div class="form-group row">       
+        <label for="exampleInputFile">Fotograf&iacute;a del puesto:</label>
+          <div>
+           <img id='img-upload' width="400px"  height="400px" src="data:image/png;base64,{[{place.image}]}" style=""/>
+          </div>
+        </div>  
+
+      <div class="form-group row">
+        <label for="example-text-input" class="col-2 col-form-label">Descripci&oacute;n:</label>
+        <div class="col-10">
+          <textarea class="form-control" ng-model="place.description" disabled=""></textarea>
+        </div>
+      </div>
     </div>
 
     <div class="col-md-1">

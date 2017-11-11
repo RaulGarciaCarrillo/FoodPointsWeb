@@ -15,35 +15,35 @@ class foodTypesTableSeeder extends Seeder
          DB::table('foodType')->insert([
          	[
                 'name' => 'Tacos',
-                'src' => 'css/img/ic_taco.png',
+                'src' => 'img/ic_taco.png',
             ],
             [
                 'name' => 'Pizza',
-                'src' => 'css/img/ic_pizza.png',
+                'src' => 'img/ic_pizza.png',
             ],
             [
                 'name' => 'Hamburguesas',
-                'src' => 'css/img/ic_hamburhuesa.png',
+                'src' => 'img/ic_hamburguesa.png',
             ],
          	[
                 'name' => 'Hotdogs',
-                'src' => 'css/img/ic_hotdog.png',
+                'src' => 'img/ic_hotdog.png',
             ],
             [
                 'name' => 'Buffet',
-                'src' => 'css/img/ic_buffet.png',
+                'src' => 'img/ic_buffet.png',
             ],
             [
                 'name' => 'Snack',
-                'src' => 'css/img/ic_snack.png',
+                'src' => 'img/ic_snack.png',
             ],
             [
                 'name' => 'China',
-                'src' => 'css/img/ic_china.png',
+                'src' => 'img/ic_china.png',
             ],
             [
                 'name' => 'Otros',
-                'src' => 'css/img/ic_otros.png',
+                'src' => 'img/ic_otros.png',
             ]
         ]);
     }

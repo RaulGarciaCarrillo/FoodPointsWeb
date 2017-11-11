@@ -86,7 +86,7 @@ class PlaceController extends Controller
             return DB::table('place')
             ->join('place_food', 'place.id', '=', 'place_food.place_id')
             ->join('foodType', 'place_food.foodType_id', '=', 'foodType.id')
-            ->select(DB::raw('place.name as placeName, place.image, place.description'))
+            ->select(DB::raw('place.name as placeName, place.image, place.description, place.id, place.latitude, place.longitude, place.address'))
             ->distinct()
             ->get();
         } else {
@@ -94,7 +94,7 @@ class PlaceController extends Controller
             ->join('place_food', 'place.id', '=', 'place_food.place_id')
             ->join('foodType', 'place_food.foodType_id', '=', 'foodType.id')
             ->whereIn('foodType.id', $ids)
-            ->select(DB::raw('place.name as placeName, place.image, place.description'))
+            ->select(DB::raw('place.name as placeName, place.image, place.description, place.id, place.latitude, place.longitude, place.address'))
             ->distinct()
             ->get();
         }        

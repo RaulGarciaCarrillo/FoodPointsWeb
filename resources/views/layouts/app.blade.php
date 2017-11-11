@@ -98,6 +98,7 @@
     <script src="js/user.js"></script>
     <script src="js/facebook.js"></script>
     <script src="js/favorite.js"></script>
+    <script src="js/viewPlace.js"></script>
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="vendor/alertify/css/alertify.css">

@@ -2,6 +2,7 @@
 
     $scope.foodTypes = [];
     $scope.place = {};
+    $scope.places = [];
     $scope.foodTypesSelected = [];
     var map;
     var geocoder;
@@ -11,22 +12,34 @@
     axios.get('place/1').then(response => {
                 $scope.place = response.data;
                 console.log(response);
+                console.log($scope.place);
                 $scope.$digest();
             })
             .catch(error => {
                 console.log(error);
             });
 
+    axios.get('favorite/1').then(response => {
+        $scope.places = response.data;
+        $scope.$digest();
+    })
+    .catch(error => {
+        console.log(error);
+    });
+
+    parseInt($scope.num1)
+
     $scope.initMaps = function() {
+        console.log($scope.place.latitude);
         map = new google.maps.Map(document.getElementById('map'), {
             zoom: 14,
-            center: { lat: 25.721, lng: -100.3 }
+            center: { lat: parseInt($scope.place.latitude), lng: parseInt($scope.place.longitude) }
         });
         geocoder = new google.maps.Geocoder;
         infowindow = new google.maps.InfoWindow;
 
         myMarker = new google.maps.Marker({
-            position: new google.maps.LatLng($scope.place.latitude, $scope.place.longitude),
+            position: new google.maps.LatLng(parseInt($scope.place.latitude), parseInt($scope.place.longitude)),
             draggable: true
         });
 

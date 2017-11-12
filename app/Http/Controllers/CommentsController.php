@@ -48,9 +48,10 @@ class CommentsController extends Controller
      */
     public function show($id)
     {
-        return DB::table('comments')
+        return DB::table('comment')
+        ->join('users', 'users.id', '=', 'comment.users_id')
         ->where('place_id', '=', $id)
-        ->select(DB::raw('comment, date'))
+        ->select(DB::raw('comment, date, users.image as userimage, users.name as user'))
         ->get();
     }
 

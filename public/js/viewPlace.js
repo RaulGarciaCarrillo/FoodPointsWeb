@@ -2,45 +2,38 @@
 
     $scope.foodTypes = [];
     $scope.place = {};
-    $scope.places = [];
+    $scope.comments = [];
     $scope.foodTypesSelected = [];
     var map;
     var geocoder;
     var infowindow;
     var myMarker;
+    var latitude;
+    var longitude;
 
     axios.get('place/1').then(response => {
-                $scope.place = response.data;
-                console.log(response);
-                console.log($scope.place);
+                $scope.place = response.data[0];
+                latitude=parseFloat($scope.place.latitude);
+                longitude=parseFloat($scope.place.longitude);
+                console.log(latitude +' ' + longitude );
                 $scope.$digest();
             })
             .catch(error => {
                 console.log(error);
             });
 
-    axios.get('favorite/1').then(response => {
-        $scope.places = response.data;
-        $scope.$digest();
-    })
-    .catch(error => {
-        console.log(error);
-    });
-
-    parseInt($scope.num1)
-
     $scope.initMaps = function() {
-        console.log($scope.place.latitude);
+        console.log(latitude, longitude);
         map = new google.maps.Map(document.getElementById('map'), {
             zoom: 14,
-            center: { lat: parseInt($scope.place.latitude), lng: parseInt($scope.place.longitude) }
+            center: { lat: latitude, lng: longitude }
         });
         geocoder = new google.maps.Geocoder;
         infowindow = new google.maps.InfoWindow;
 
         myMarker = new google.maps.Marker({
-            position: new google.maps.LatLng(parseInt($scope.place.latitude), parseInt($scope.place.longitude)),
-            draggable: true
+            position: new google.maps.LatLng(latitude, longitude),
+            draggable: false
         });
 
         /*google.maps.event.addListener(myMarker, 'dragend', function(evt) {
@@ -83,6 +76,14 @@
         .catch(error => {
             console.log(error);
         });
+
+     axios.get('comments/1').then(response => {
+                $scope.comments = response.data;
+                $scope.$digest();
+            })
+            .catch(error => {
+                console.log(error);
+            });
 
 });
 

@@ -29,6 +29,9 @@ Route::get('/place/{id}', 'PlaceController@show');
 
 Route::get('/favorite/{id}', 'FavoriteController@show');
 
+Route::get('/comments/{id}', 'CommentsController@show');
+
+
 Route::get('/profile', function () {
     return view('profile');
 })->middleware('auth');

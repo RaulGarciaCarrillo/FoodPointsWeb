@@ -9,7 +9,7 @@ hr {
     border-top: 1px solid #FFFFFF;
 }
 
-textarea {
+textarea{
     resize: none;
 }
 
@@ -129,7 +129,7 @@ h2 {
         <label for="example-text-input" class="col-2 col-form-label">Direcci&oacute;n:</label>
         <div id="map" style="width: 97%; height: 50%; border: 1px solid #DD1818;"></div>
         <div class="col-9">
-          <textarea class="form-control" type="text" ng-model="place.adrees"  style="width:97%"> 
+          <textarea class="form-control" type="text" ng-model="place.address"  style="width:97%" readonly> 
           </textarea>
         </div>
       </div>
@@ -140,14 +140,14 @@ h2 {
       <div class="form-group row">       
         <label for="exampleInputFile">Fotograf&iacute;a del puesto:</label>
           <div>
-           <img id='img-upload' width="400px"  height="400px" src="data:image/png;base64,{[{place.image}]}" style=""/>
+           <img id='img-upload' width="100%"  height="400px" src="data:image/png;base64,{[{place.image}]}" style=""/>
           </div>
         </div>  
 
       <div class="form-group row">
         <label for="example-text-input" class="col-2 col-form-label">Descripci&oacute;n:</label>
         <div class="col-10">
-          <textarea class="form-control" ng-model="place.description" disabled=""></textarea>
+          <textarea class="form-control" ng-model="place.description" readonly></textarea>
         </div>
       </div>
     </div>
@@ -162,23 +162,12 @@ h2 {
         <div class="blog-comment">
          <div class="panel-heading">Comentarios</div>
         <ul class="comments">
-        <li class="clearfix">
-          <img src="https://bootdey.com/img/Content/user_1.jpg" class="avatar" alt="">
+        <li class="clearfix" ng-repeat="comment in comments track by $index">
+          <img src="data:image/png;base64,{[{comment.userimage}]}" class="avatar">
           <div class="post-comments">
-              <p class="meta">Dec 18, 2014 <strong> JohnDoe </strong> says : <i class="pull-right"></i></p>
+              <p class="meta">{[{comment.date}]}, <strong> {[{comment.user}]} </strong> dice: <i class="pull-right"></i></p>
               <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Etiam a sapien odio, sit amet
-              </p>
-          </div>
-        </li>
-        <li class="clearfix">
-          <img src="https://bootdey.com/img/Content/user_2.jpg" class="avatar" alt="">
-          <div class="post-comments">
-              <p class="meta">Dec 19, 2014 <strong> JohnDoe </strong> says : <i class="pull-right"></i></p>
-              <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Etiam a sapien odio, sit amet
+                  {[{comment.comment}]}
               </p>
           </div>
         </li>
@@ -186,7 +175,7 @@ h2 {
         <div class="comments">
            <img src="https://bootdey.com/img/Content/user_1.jpg" class="avatar" alt="">
           <div class="post-comments" style="padding-bottom: 7%;">
-              <p class="meta">Dec 18, 2014, <strong> JohnDoe </strong> says : <i class="pull-right"></i></p>
+            <p class="meta"> <span id="date"></span> <strong> JohnDoe </strong> dice: <i class="pull-right"></i></p>
               <textarea class="form-control" placeholer="Message">
               </textarea>
                <button type="button" style="margin-top: 1%"
@@ -202,4 +191,12 @@ h2 {
 </div>
 
 </div>
+
+<script type="text/javascript">
+  n =  new Date();
+  y = n.getFullYear();
+  m = n.getMonth() + 1;
+  d = n.getDate();
+  document.getElementById("date").innerHTML = y + "-" + m + "-" + d;
+</script>
 @endsection

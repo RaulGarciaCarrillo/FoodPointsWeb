@@ -17,6 +17,11 @@ myApp.controller("ctrlPlace", function($scope) {
 
     }
 
+    $scope.verPuesto = function(id) {
+        localStorage.idPlace = id;
+        window.location.href = '/viewPlace';
+    };
+
     $scope.actualizarPuestos = function() {
 
         var data;

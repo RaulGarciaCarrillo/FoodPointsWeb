@@ -21,6 +21,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/foodType', 'foodTypeController@get')->name('foodType');
 
+Route::get('/foodTypePlace/{id}', 'foodTypeController@getPlace');
+
 Route::get('/profile/{id}', 'UserController@show');
 
 Route::post('/profile/editar', 'UserController@editar');

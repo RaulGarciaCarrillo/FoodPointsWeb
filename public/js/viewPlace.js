@@ -10,20 +10,30 @@
     var myMarker;
     var latitude;
     var longitude;
+    var idPlace = localStorage.idPlace;
 
-    axios.get('place/1').then(response => {
+    axios.get('place/' + idPlace).then(response => {
                 $scope.place = response.data[0];
                 latitude=parseFloat($scope.place.latitude);
                 longitude=parseFloat($scope.place.longitude);
                 console.log(latitude +' ' + longitude );
                 $scope.$digest();
+                $scope.initMaps();
             })
             .catch(error => {
                 console.log(error);
             });
 
     $scope.initMaps = function() {
-        console.log(latitude, longitude);
+        
+        if(latitude === undefined) {
+            latitude = 25;
+        }
+
+        if(longitude === undefined){
+            longitude = -100;
+        }
+
         map = new google.maps.Map(document.getElementById('map'), {
             zoom: 14,
             center: { lat: latitude, lng: longitude }
@@ -35,13 +45,6 @@
             position: new google.maps.LatLng(latitude, longitude),
             draggable: false
         });
-
-        /*google.maps.event.addListener(myMarker, 'dragend', function(evt) {
-            var lat = evt.latLng.lat().toFixed(3);
-            var lng = evt.latLng.lng().toFixed(3);
-            $scope.geocodeLatLng(geocoder, map, infowindow, lat, lng);
-        }); */
-
 
         map.setCenter(myMarker.position);
         myMarker.setMap(map);
@@ -69,7 +72,7 @@
         });
     };
 
-    axios.get('foodType').then(response => {
+    axios.get('foodTypePlace/' + idPlace).then(response => {
             $scope.foodTypes = response.data;
             $scope.$digest();
         })

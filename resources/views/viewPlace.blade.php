@@ -106,7 +106,7 @@ h2 {
         </div>
     @endif
 
-<div ng-controller="ctrlPlaceView" class="container-fluid" ng-init="initMaps()">
+<div ng-controller="ctrlPlaceView" class="container-fluid" >
 
     <div class="col-md-12">
        <h2 class="text-center">{[{place.placeName}]}</h2>

@@ -15,4 +15,13 @@ class foodTypeController extends Controller
         return $foodType;
     }
 
+    public function getPlace($id)
+    {
+    	$foodType = DB::select("SELECT ft.id, ft.name, ft.src FROM place_food pf
+								INNER JOIN foodType ft
+								ON pf.foodType_id = ft.id
+								WHERE pf.place_id = $id ");
+        return $foodType;
+    }
+
 }

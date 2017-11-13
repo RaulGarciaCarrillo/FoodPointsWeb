@@ -33,14 +33,12 @@
 
 			<div class="form-group row">
 				<label for="example-text-input" class="col-2 col-form-label">Tipos de comida:</label>
-				<div class="checkbox" ng-repeat="foodType in foodTypes track by $index">
-			  <label>
-				  <input 
-						 type="checkbox" 
-						 ng-model="foodType.isChecked" 
-						 ng-change="actualizarTipos(foodType)">{[{ foodType.name }]}
-			  </label>
-				</div>
+			  	<ul class="col-md-12">
+	            <li class="thumbnail col-md-3 col-xs-3" ng-repeat="foodType in foodTypes track by $index" style="margin-bottom: 1%">
+	            	<input type="checkbox" ng-model="foodType.isChecked" ng-change="actualizarTipos(foodType)">
+	                <img ng-src="{[{foodType.src}]}" alt="{[{ foodType.name }]}" title="{[{ foodType.name }]} " height="200" width="200">
+	            </li>
+        	</ul>
 			</div>
 
 			<div class="form-group row">

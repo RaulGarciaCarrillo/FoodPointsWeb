@@ -53,7 +53,7 @@ class favoriteController extends Controller
         ->join('favorite', 'place.id', '=', 'favorite.place_id')
         ->join('users', 'users.id', '=', 'favorite.users_id')
         ->where('users.id', '=', Auth::user()->id)
-        ->select(DB::raw('place.name as placeName, place.image, place.description'))
+        ->select(DB::raw('place.name as placeName, place.image, place.description, place.id'))
         ->get();
     }
 

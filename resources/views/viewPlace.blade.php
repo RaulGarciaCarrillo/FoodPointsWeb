@@ -165,7 +165,7 @@ h2 {
         <li class="clearfix" ng-repeat="comment in comments track by $index">
           <img src="data:image/png;base64,{[{comment.userimage}]}" class="avatar">
           <div class="post-comments">
-              <p class="meta">{[{comment.date}]}, <strong> {[{comment.user}]} </strong> dice: <i class="pull-right"></i></p>
+              <p class="meta">{[{comment.date}]}, <strong> {[{comment.user}]} </strong> dijo: <i class="pull-right"></i></p>
               <p>
                   {[{comment.comment}]}
               </p>
@@ -173,17 +173,17 @@ h2 {
         </li>
         </ul>
         <div class="comments">
+         <form name="formComments" novalidate>
            <img src="https://bootdey.com/img/Content/user_1.jpg" class="avatar" alt="">
           <div class="post-comments" style="padding-bottom: 7%;">
             <p class="meta"> <span id="date"></span> <strong> JohnDoe </strong> dice: <i class="pull-right"></i></p>
-              <textarea class="form-control" placeholer="Message">
+              <textarea class="form-control" placeholer="Message" required="true" ng-model="comment.comment">
               </textarea>
-               <button type="button" style="margin-top: 1%"
-                     ng-click=""
-                     class="btn btn-success pull-right">
+               <button type="submit" style="margin-top: 1%" ng-click="agregar()" class="btn btn-success pull-right" ng-disabled="formComments.$invalid">
                  Comentar
               </button>
           </div>
+          </form>
          </div>
       </div>
     </div>

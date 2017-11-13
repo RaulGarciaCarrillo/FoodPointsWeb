@@ -33,6 +33,10 @@ Route::get('/favorite/{id}', 'FavoriteController@show');
 
 Route::get('/comments/{id}', 'CommentsController@show');
 
+Route::post('/comments/{comment}', 'CommentsController@create');
+
+Route::post('/comments/add', 'CommentsController@create');
+
 
 Route::get('/profile', function () {
     return view('profile');

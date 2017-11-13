@@ -27,6 +27,12 @@ class CommentsController extends Controller
     public function create()
     {
         //
+        $comment = new Comment;
+        $comment->comment = $request->input('comment');
+        $comment->date = $request->input('date');
+        $comment->users_id = $request->input('user_id');
+        $comment->place_id = $request->input('place_id');
+        $comment->save();
     }
 
     /**

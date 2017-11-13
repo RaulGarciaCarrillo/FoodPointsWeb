@@ -9,4 +9,9 @@ myApp.controller("ctrlFavorite", function($scope) {
         .catch(error => {
             console.log(error);
         });
+
+      $scope.verPuesto = function(id) {
+        localStorage.idPlace = id;
+        window.location.href = '/viewPlace';
+    };
 });

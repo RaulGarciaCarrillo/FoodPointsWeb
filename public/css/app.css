@@ -10,3 +10,4 @@
  .btn-danger{background-color: #172525; border-color:#172525;} .btn-danger:hover{background-color: #263e3e; border-color:#172525;}
  .thumbnail{display: inline-block; }
  #description{margin-left: 5%; margin-right: 5%; height: 10%;}
+ .fa-heart {color:red;}

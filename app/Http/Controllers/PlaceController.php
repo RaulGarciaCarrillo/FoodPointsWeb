@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Place;
 use App\PlaceFood;
+use Auth;
 use Illuminate\Http\Request;
 use DB;
 use App\Quotation;
@@ -86,7 +87,12 @@ class PlaceController extends Controller
             return DB::table('place')
             ->join('place_food', 'place.id', '=', 'place_food.place_id')
             ->join('foodType', 'place_food.foodType_id', '=', 'foodType.id')
-            ->select(DB::raw('place.name as placeName, place.image, place.description, place.id, place.latitude, place.longitude, place.address'))
+            ->select(DB::raw('place.name as placeName, place.image, place.description, place.id, place.latitude, place.longitude, place.address, favorite.id isFavorite'))
+            ->leftJoin('favorite', function($leftJoin)
+                {
+                    $leftJoin->on('place.id', '=', 'favorite.users_id')
+                         ->where('favorite.users_id', '=', Auth::user()->id);
+                })
             ->distinct()
             ->get();
         } else {
@@ -94,7 +100,12 @@ class PlaceController extends Controller
             ->join('place_food', 'place.id', '=', 'place_food.place_id')
             ->join('foodType', 'place_food.foodType_id', '=', 'foodType.id')
             ->whereIn('foodType.id', $ids)
-            ->select(DB::raw('place.name as placeName, place.image, place.description, place.id, place.latitude, place.longitude, place.address'))
+            ->select(DB::raw('place.name as placeName, place.image, place.description, place.id, place.latitude, place.longitude, place.address, favorite.id isFavorite'))
+            ->leftJoin('favorite', function($leftJoin)
+                {
+                    $leftJoin->on('place.id', '=', 'favorite.users_id')
+                         ->where('favorite.users_id', '=', Auth::user()->id);
+                })
             ->distinct()
             ->get();
         }        

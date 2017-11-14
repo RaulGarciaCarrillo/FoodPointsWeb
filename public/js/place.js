@@ -44,6 +44,29 @@ myApp.controller("ctrlPlace", function($scope) {
             });
     }
 
+    $scope.updateFavorite = function(place) {
+        console.log(place);
+        if(place.isFavorite == null){
+            axios.get('addFavorite/' + place.id).then(response => {
+                place.isFavorite = true;
+                console.log(response);
+                $scope.$digest();
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        } else{
+            axios.get('removeFavorite/' + place.id).then(response => {
+                place.isFavorite = false;
+                console.log(response);
+                $scope.$digest();
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        }
+    };
+
     $scope.actualizarPuestos();
 
     axios.get('foodType').then(response => {

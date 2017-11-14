@@ -31,6 +31,10 @@ Route::get('/place/{id}', 'PlaceController@show');
 
 Route::get('/favorite/{id}', 'FavoriteController@show');
 
+Route::get('/addFavorite/{id}', 'FavoriteController@addFavorite');
+
+Route::get('/removeFavorite/{id}', 'FavoriteController@removeFavorite');
+
 Route::get('/comments/{id}', 'CommentsController@show');
 
 Route::post('/comments/{comment}', 'CommentsController@create');

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Place;
+use App\Favorite;
 use Illuminate\Http\Request;
 use DB;
 use App\Quotation;
@@ -10,24 +10,22 @@ use Auth;
 
 class favoriteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function removeFavorite($id)
     {
-        //
+        $favorite = Favorite::where('users_id', Auth::user()->id)
+        ->where('place_id', $id)
+        ->delete();
+        return 'ok';
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function addFavorite($id)
     {
-        //
+        $favorite = new Favorite;
+        $favorite->users_id = Auth::user()->id;
+        $favorite->place_id = $id;
+        $favorite->save();     
+        return $favorite;
     }
 
     /**
@@ -54,6 +52,7 @@ class favoriteController extends Controller
         ->join('users', 'users.id', '=', 'favorite.users_id')
         ->where('users.id', '=', Auth::user()->id)
         ->select(DB::raw('place.name as placeName, place.image, place.description, place.id'))
+        ->distinct()
         ->get();
     }
 

@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Place;
+use App\Comment;
 use Illuminate\Http\Request;
 use DB;
+use Auth;
 use App\Quotation;
+use DateTime;
+use Carbon\Carbon;
+
 
 class CommentsController extends Controller
 {
@@ -24,15 +28,19 @@ class CommentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //
+        $now = new DateTime();
+        $mytime = Carbon::now();
         $comment = new Comment;
         $comment->comment = $request->input('comment');
-        $comment->date = $request->input('date');
-        $comment->users_id = $request->input('user_id');
+        $comment->date = $now;
+        $comment->users_id = Auth::user()->id;
         $comment->place_id = $request->input('place_id');
         $comment->save();
+
+        return $this->show($comment->place_id);
     }
 
     /**
@@ -58,6 +66,7 @@ class CommentsController extends Controller
         ->join('users', 'users.id', '=', 'comment.users_id')
         ->where('place_id', '=', $id)
         ->select(DB::raw('comment, date, users.image as userimage, users.name as user'))
+        ->orderByRaw('date ASC')
         ->get();
     }
 

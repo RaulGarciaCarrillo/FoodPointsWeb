@@ -57,7 +57,7 @@ myApp.controller("ctrlPlace", function($scope) {
             });
         } else{
             axios.get('removeFavorite/' + place.id).then(response => {
-                place.isFavorite = false;
+                place.isFavorite = null;
                 console.log(response);
                 $scope.$digest();
             })

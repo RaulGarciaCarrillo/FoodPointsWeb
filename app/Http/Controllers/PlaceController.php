@@ -87,10 +87,10 @@ class PlaceController extends Controller
             return DB::table('place')
             ->join('place_food', 'place.id', '=', 'place_food.place_id')
             ->join('foodType', 'place_food.foodType_id', '=', 'foodType.id')
-            ->select(DB::raw('place.name as placeName, place.image, place.description, place.id, place.latitude, place.longitude, place.address, favorite.id isFavorite'))
+            ->select(DB::raw('place.name as placeName, place.image, place.description, place.id, place.latitude, place.longitude, place.address, favorite.place_id isFavorite'))
             ->leftJoin('favorite', function($leftJoin)
                 {
-                    $leftJoin->on('place.id', '=', 'favorite.users_id')
+                    $leftJoin->on('place.id', '=', 'favorite.place_id')
                          ->where('favorite.users_id', '=', Auth::user()->id);
                 })
             ->distinct()
@@ -100,10 +100,10 @@ class PlaceController extends Controller
             ->join('place_food', 'place.id', '=', 'place_food.place_id')
             ->join('foodType', 'place_food.foodType_id', '=', 'foodType.id')
             ->whereIn('foodType.id', $ids)
-            ->select(DB::raw('place.name as placeName, place.image, place.description, place.id, place.latitude, place.longitude, place.address, favorite.id isFavorite'))
+            ->select(DB::raw('place.name as placeName, place.image, place.description, place.id, place.latitude, place.longitude, place.address, favorite.place_id isFavorite'))
             ->leftJoin('favorite', function($leftJoin)
                 {
-                    $leftJoin->on('place.id', '=', 'favorite.users_id')
+                    $leftJoin->on('place.id', '=', 'favorite.place_id')
                          ->where('favorite.users_id', '=', Auth::user()->id);
                 })
             ->distinct()

@@ -15,7 +15,7 @@
 		    <li class="thumbnail col-md-4 col-xs-8" ng-repeat="place in places track by $index">
 		        <h2 class="text-center">{[{place.placeName}]}</h2>
 		        <div class="col-md-12 text-center">
-		          <i class="fa fa-heart fa-3x" aria-hidden="true"></i>
+		          <i style="padding: 10px;" class="fa fa-heart fa-3x" aria-hidden="true"></i>
 		        </div>
 		         <a ><img ng-click="verPuesto(place.id)" width="100%" src="data:image/png;base64,{[{place.image}]}" /></a>
 		        <p id="description">{[{place.description}]}</p>

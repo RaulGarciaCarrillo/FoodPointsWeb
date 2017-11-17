@@ -33,7 +33,7 @@
 	        </div>
 
 	        <a ><img  ng-click="verPuesto(place.id)" width="100%" src="data:image/png;base64,{[{place.image}]}" /></a>
-	        <p>{[{place.description}]}</p>
+	        <p style="font-size: 22px; padding: 10px; background:white; border: 1px solid #d6d6d6;"> {[{place.description}]}</p>
 	    </div>
 	</div>
 

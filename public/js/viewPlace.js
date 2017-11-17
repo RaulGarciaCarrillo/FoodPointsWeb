@@ -14,7 +14,7 @@
     var longitude;
     var idPlace = localStorage.idPlace;
 
-    axios.get('place/' + idPlace).then(response => {
+    axios.get('placeView/' + idPlace).then(response => {
                 $scope.place = response.data[0];
                 console.log($scope.place);
                 latitude=parseFloat($scope.place.latitude);

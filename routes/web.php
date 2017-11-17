@@ -29,6 +29,8 @@ Route::post('/profile/editar', 'UserController@editar');
 
 Route::get('/place/{id}', 'PlaceController@show');
 
+Route::get('/placeView/{id}', 'PlaceController@consultar');
+
 Route::get('/favorite/{id}', 'FavoriteController@show');
 
 Route::get('/addFavorite/{id}', 'FavoriteController@addFavorite');

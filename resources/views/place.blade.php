@@ -21,15 +21,8 @@
 	<div class="col-md-7" >
 	    <div ng-repeat="place in places track by $index">
 	        <h2 class="text-center">{[{place.placeName}]}</h2>
-	        <div class="col-md-6 text-center">
-	            <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
-	            <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
-	            <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
-	            <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
-	            <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
-	            </div>
-	        <div ng-class="falseClass" class="col-md-6 text-center">
-	          <i style="cursor:pointer" ng-click="updateFavorite(place)" ng-class="place.isFavorite ? 'fa fa-2x fa-heart' : 'fa fa-2x fa-heart-o'" aria-hidden="true"></i>
+	        <div ng-class="falseClass" class="col-md-12 text-center">
+	          <i style="cursor:pointer; padding:10px" ng-click="updateFavorite(place)" ng-class="place.isFavorite ? 'fa fa-2x fa-heart' : 'fa fa-2x fa-heart-o'" aria-hidden="true"></i>
 	        </div>
 
 	        <a ><img  ng-click="verPuesto(place.id)" width="100%" src="data:image/png;base64,{[{place.image}]}" /></a>

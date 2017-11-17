@@ -85,6 +85,7 @@
 
      axios.get('comments/' + idPlace).then(response => {
                 $scope.comments = response.data;
+
                 $scope.$digest();
             })
             .catch(error => {
